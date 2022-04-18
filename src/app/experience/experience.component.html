@@ -1,7 +1,12 @@
-<div class="workHistory">
-  <p><span class="fieldName">Должность:</span> {{position|uppercase}}
-  <input type="button" value="more">
+<div class="workHistory" [ngStyle]="{
+  backgroundColor: pastDays(eItem.startDate)<365 ? 'lightgreen' : 'lightblue'
+}">
+  <img [src]="firmURL" >
+  <p><span class="fieldName">Должность:</span> {{eItem.position|uppercase}}
+ <input (click)="hideDesc()" type="button" [value] ="isHide?'hide':'more'">
   </p>
-<p><span class="fieldName">Описание:</span> {{desc}}</p>
-<p><span class="fieldName">Период:</span> {{startDate|date:'dd MMMM YYYY':'UTC':'ru'}} - {{endDate|date:'dd MMMM YYYY':'UTC':'ru'}}</p>
+  <div *ngIf="isHide">
+<p><span class="fieldName">Описание:</span> {{eItem.desc}}</p>
+<p><span class="fieldName">Период:</span> {{eItem.startDate|date:'dd MMMM YYYY':'UTC':'ru'}} - {{eItem.endDate|date:'dd MMMM YYYY':'UTC':'ru'}}</p>
+  </div>
 </div>

@@ -3,5 +3,5 @@
 <ul>
   <li *ngFor="let item of items">{{item.position}}</li>
 </ul>
-<app-experience *ngFor="let item of items"></app-experience>
+<app-experience *ngFor="let item of items" [eItem]="item"></app-experience>
 <p>{{payment|currency}} в час</p>
